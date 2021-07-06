@@ -5,14 +5,18 @@ import (
 	"log"
 )
 
+var cfg = &config.Config{}
+
 func init() {
-	var cfg *config.Config
-	if err := config.ReadFile(cfg); err != nil {
+
+	if err := config.Parse("./build/config/config.yaml",cfg); err != nil {
 		log.Fatalln(err)
 	}
+
 	if err := config.ReadEnv(cfg); err != nil {
 		log.Fatalln(err)
 	}
+
 	config.SetConfig(cfg)
 }
 
