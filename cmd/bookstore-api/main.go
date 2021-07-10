@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/saeedrm6/web-service-go/internal/application"
 	"github.com/saeedrm6/web-service-go/internal/config"
 	"log"
 )
@@ -21,5 +22,7 @@ func init() {
 }
 
 func main() {
-
+	if err := application.Run(cfg); err != nil {
+		log.Fatalln(err)
+	}
 }
